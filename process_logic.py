@@ -7,14 +7,14 @@ class ProcessLogic:
         self.flow_speed = 0.6
 
     def step(self):
-        """Jeden krok symulacji (kaskada w dół)."""
         moved = []
 
         for i in range(len(self.zbiorniki) - 1):
-            m = self._transfer(self.zbiorniki[i], self.zbiorniki[i + 1])
-            moved.append(m)
+            moved.append(
+                self._transfer(self.zbiorniki[i], self.zbiorniki[i + 1])
+            )
 
-        return moved  # lista ile faktycznie płynęło na poszczególnych odcinkach
+        return moved
 
     def _transfer(self, z_from: Zbiornik, z_to: Zbiornik) -> float:
         if z_from.czy_pusty() or z_to.czy_pelny():
